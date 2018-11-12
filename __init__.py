@@ -88,12 +88,10 @@ def check_geo_location():
 def record_audio():
 
     p = pyaudio.PyAudio()
-    stream = p.open(format=FORMAT,
-                    channels = 1,
-                    rate = RATE,
-                    input = True,
-                    input_device_index = 1,
-                    frames_per_buffer = CHUNK)
+    stream = p.open(format=p.get_format_from_width(f.getsampwidth()),
+                    channels=f.getnchannels(),
+                    rate=f.getframerate(),
+                    output=True)
 
     print("* Now Recording")
 
