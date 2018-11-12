@@ -59,11 +59,11 @@ class AuthenticateSkill(MycroftSkill):
         check_geo_location()
 
 def check_voice_it():
-    password = "Password1234@"
+    password = ""
     pwd = hashlib.sha256(password.encode("ascii")).hexdigest()
     print(pwd)
     userId = "bharathwaj"
-    developerID = "a3f54f38702e4477ad2d5befe6282725"
+    developerID = ""
     with open('/home/brad/Desktop/mycroft-core/Audio_.wav', 'rb') as file:
             wavData = file.read()
 
