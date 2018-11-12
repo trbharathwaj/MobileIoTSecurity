@@ -13,6 +13,7 @@ import pyaudio, wave, sys
 import requests
 import hashlib
 import time
+import json
 
 CHUNK = 8192
 FORMAT = pyaudio.paInt16
@@ -55,6 +56,7 @@ class AuthenticateSkill(MycroftSkill):
         record_audio()
         play_audio('Audio_.wav')
         check_voice_it()
+        check_geo_location()
 
 def check_voice_it():
     password = "Password1234@"
@@ -71,6 +73,17 @@ def check_voice_it():
     
     
     print(response.text)
+    
+def check_geo_location():
+    URL = 'http://msecbrad.byethost24.com/read.php?i=1'
+    token = '734c8a774d31c5db2e4a9eee0def9224'
+    cookies = dict(__test=token)
+    r = requests.get(URL, cookies=cookies)
+    response = json.loads(r.content)
+    if r.status_code != 200:
+        return_error('Error: %s\n' % (response['error']['message']))
+    state = response['records'][0]['Status']
+    print state
      
 def record_audio():
 
