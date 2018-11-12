@@ -83,7 +83,7 @@ def check_geo_location():
     if r.status_code != 200:
         return_error('Error: %s\n' % (response['error']['message']))
     state = response['records'][0]['Status']
-    print state
+    print(state)
      
 def record_audio():
 
