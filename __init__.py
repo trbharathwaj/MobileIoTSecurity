@@ -15,7 +15,7 @@ import hashlib
 import time
 import json
 
-CHUNK = 8192
+CHUNK = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 16000
